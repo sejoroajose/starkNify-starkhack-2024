@@ -1,0 +1,24 @@
+/* Import Tailwind CSS layers */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Define CSS variables for colors */
+:root {
+  --foreground-rgb: 0, 0, 0;             /* Text color for light mode (black) */
+  --background-start-rgb: 255, 255, 255; /* Background color for light mode (white) */
+  --background-end-rgb: 255, 255, 255;   /* Background color for light mode (white) */
+}
+
+/* Apply styles to the body */
+body {
+  color: rgb(var(--foreground-rgb));     /* Apply text color */
+  background: rgb(var(--background-start-rgb)); /* Apply background color */
+}
+
+/* Custom utility class for text balance */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;                  /* Apply balanced text wrapping */
+  }
+}
