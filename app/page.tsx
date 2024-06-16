@@ -52,7 +52,7 @@ export default function Home() {
 
       <div>
         <WalletConnect />
-        {/* <p>Welcome to Starknify</p> */}
+        <p>Welcome to Starknify</p>
       </div>
     </div>
   )
