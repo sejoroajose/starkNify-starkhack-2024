@@ -1,10 +1,13 @@
-import Image from 'next/image'
-import WalletConnect from '@/app/dynamic'
+"use client"
 
-export default function Dashboard() {
+import Dashboard from '@/app/dashboard/dashboard'
+
+export default function DDashboard() {
   return (
     <>
       <p>Welcome to the dashboard Page</p>
+      <h1>Side Nav</h1>
+      <Dashboard />
     </>
   )
 }
