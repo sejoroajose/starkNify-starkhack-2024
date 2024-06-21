@@ -48,7 +48,7 @@ def get_data(conn, table_name, columns, start_date, end_date):
     return df
 
 # Main app
-st.title("Snowflake Data Viewer")
+st.title("Starknify Data viewer")
 
 # Get connection to Snowflake
 conn = get_snowflake_connection()

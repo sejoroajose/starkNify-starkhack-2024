@@ -1,13 +1,20 @@
-"use client"
+'use client';
 
-import Dashboard from '@/app/dashboard/dashboard'
+import * as React from 'react'
+import Iframe from 'react-iframe'
 
-export default function DDashboard() {
+const DashboardPage: React.FC = () => {
   return (
-    <>
-      <p>Welcome to the dashboard Page</p>
-      <h1>Side Nav</h1>
-      <Dashboard />
-    </>
+    <Iframe
+      url="http://localhost:8501"
+      width="100%"
+      height="1000vh"
+      display="initial"
+      position="relative"
+      allowFullScreen
+    />
   )
 }
+
+export default DashboardPage
+
