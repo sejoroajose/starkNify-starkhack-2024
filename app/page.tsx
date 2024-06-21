@@ -1,17 +1,36 @@
-import Image from 'next/image'
-import WalletConnect from '@/app/dynamic'
+'use client'
 
-export default function Home() {
+import React from 'react'
+import CssBaseline from '@mui/material/CssBaseline'
+import Box from '@mui/material/Box'
+import { alpha } from '@mui/material' 
+import Iframe from 'react-iframe'
+import AppAppBar from '@/app/components/AppAppBar'
+import Hero from '@/app/components/Hero'
+
+export default function LandingPage() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center relative">
-      <div className="fixed top-4 right-4">
-        <WalletConnect />
-      </div>
-
-      <div className="flex flex-col items-center justify-center">
-        <p className="text-2xl font-bold">Welcome to Starknify</p>
-        <p>YOu are welcome</p>
-      </div>
-    </main>
+    <Box>
+      <CssBaseline />
+      <AppAppBar />
+      <Hero />
+      <Box
+        sx={{
+          mt: { xs: 4, sm: 6 }, 
+          display: 'flex', 
+          justifyContent: 'center', 
+          width: '100%', 
+        }}
+      >
+        <Iframe
+          url="http://localhost:8501"
+          width="90%" 
+          height="1000vh"
+          display="block"
+          position="relative"
+          allowFullScreen
+        />
+      </Box>
+    </Box>
   )
 }

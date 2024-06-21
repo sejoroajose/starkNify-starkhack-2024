@@ -24,14 +24,14 @@ const BalanceVerifier: React.FC = () => {
 
     const data = {
       destinationChainId: 'SN_SEPOLIA',
-      fee: '0', 
+      fee: '0',
       data: {
         [chainId]: {
           [`block:${blockNumber}`]: {
             accounts: {
               [address]: {
                 props: ['BALANCE', 'NONCE', 'STORAGE_ROOT'],
-                slots: [], 
+                slots: [],
               },
             },
           },
@@ -74,48 +74,67 @@ const BalanceVerifier: React.FC = () => {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="address">Wallet Address:</label>
-        <input
-          type="text"
-          id="address"
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
-          required
-        />
-        <label htmlFor="blockNumber">Block Number:</label>
-        <input
-          type="number"
-          id="blockNumber"
-          value={blockNumber}
-          onChange={(e) => setBlockNumber(e.target.value)}
-          required
-        />
-        <label htmlFor="chainId">Chain ID:</label>
-        <select
-          id="chainId"
-          value={chainId}
-          onChange={(e) => setChainId(e.target.value)}
-          required
-        >
-          <option value="11155111">Sepolia N</option>
-          <option value="1">Ethereum Mainnet</option>
-          <option value="5">Goerli Testnet</option>
-        </select>
-        <button type="submit" disabled={isLoading}>
-          {isLoading ? 'Loading...' : 'Submit'}
-        </button>
-      </form>
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="bg-white p-8 rounded shadow-md w-full max-w-md">
+        <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
+          <label htmlFor="address" className="font-medium">
+            Wallet Address:
+          </label>
+          <input
+            type="text"
+            id="address"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+            className="p-2 border rounded"
+            required
+          />
+          <label htmlFor="blockNumber" className="font-medium">
+            Block Number:
+          </label>
+          <input
+            type="number"
+            id="blockNumber"
+            value={blockNumber}
+            onChange={(e) => setBlockNumber(e.target.value)}
+            className="p-2 border rounded"
+            required
+          />
+          <label htmlFor="chainId" className="font-medium">
+            Chain:
+          </label>
+          <select
+            id="chainId"
+            value={chainId}
+            onChange={(e) => setChainId(e.target.value)}
+            className="p-2 border rounded"
+            required
+          >
+            <option value="11155111">Sepolia N</option>
+            <option value="1">Ethereum Mainnet</option>
+            <option value="5">Goerli Testnet</option>
+          </select>
+          <button
+            type="submit"
+            className={`p-2 rounded bg-slate-900 text-white ${
+              isLoading ? 'opacity-50 cursor-not-allowed' : ''
+            }`}
+            disabled={isLoading}
+          >
+            {isLoading ? 'Loading...' : 'Submit'}
+          </button>
+        </form>
 
-      {error && <p style={{ color: 'red' }}>Error: {error}</p>}
+        {error && <p className="text-red-500 mt-4">Error: {error}</p>}
 
-      {result && (
-        <div>
-          <h2>Result:</h2>
-          <pre>{JSON.stringify(result, null, 2)}</pre>
-        </div>
-      )}
+        {result && (
+          <div className="mt-4">
+            <h2 className="font-bold">Result:</h2>
+            <pre className="bg-gray-200 p-2 rounded">
+              {JSON.stringify(result, null, 2)}
+            </pre>
+          </div>
+        )}
+      </div>
     </div>
   )
 }

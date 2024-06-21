@@ -1,15 +1,13 @@
-'use client' 
+'use client'
 
-import * as React from 'react'
+import React from 'react'
 import { styled, createTheme, ThemeProvider } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
 import MuiDrawer from '@mui/material/Drawer'
 import Box from '@mui/material/Box'
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
 import Divider from '@mui/material/Divider'
 import IconButton from '@mui/material/IconButton'
-import MenuIcon from '@mui/icons-material/Menu'
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
@@ -22,34 +20,12 @@ import DashboardIcon from '@mui/icons-material/Dashboard'
 import ExitToAppIcon from '@mui/icons-material/ExitToApp'
 import Link from 'next/link'
 import Button from '@mui/material/Button'
-import Iframe from 'react-iframe'
 import WalletConnect from '@/app/dynamic'
 
-const drawerWidth: number = 300
+// Set drawer width
+const drawerWidth = 300
 
-interface AppBarProps extends MuiAppBarProps {
-  open?: boolean
-}
-
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== 'open',
-})<AppBarProps>(({ theme, open }) => ({
-  zIndex: theme.zIndex.drawer + 1,
-  transition: theme.transitions.create(['width', 'margin'], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  backgroundColor: '#333', 
-  ...(open && {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  }),
-}))
-
+// Custom styled component for the Drawer
 const Drawer = styled(MuiDrawer, {
   shouldForwardProp: (prop) => prop !== 'open',
 })(({ theme, open }) => ({
@@ -79,14 +55,16 @@ const Drawer = styled(MuiDrawer, {
   },
 }))
 
+// Define your theme
 const defaultTheme = createTheme({
   palette: {
     primary: {
-      main: '#333', 
+      main: '#333',
     },
   },
 })
 
+// Navigation items
 const navItems = [
   { text: 'Starknet Explorer', icon: <HomeIcon />, link: '/' },
   { text: 'Storage Proof', icon: <TableChartIcon />, link: '/tables' },
@@ -102,35 +80,15 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   }
 
   const handleSignOut = () => {
-    window.location.href = '/signin' 
+    window.location.href = '/signin'
   }
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Box sx={{ display: 'flex', p: 0 }}>
-        {' '}
-        {/* Remove the padding */}
+      <Box sx={{ display: 'flex', minHeight: '100vh' }}>
         <CssBaseline />
-        <AppBar position="absolute" open={open}>
-          <Toolbar
-            sx={{
-              pr: '24px',
-            }}
-          >
-            <IconButton
-              edge="start"
-              color="inherit"
-              aria-label="open drawer"
-              onClick={toggleDrawer}
-              sx={{
-                marginRight: '36px',
-                ...(open && { display: 'none' }),
-              }}
-            >
-              <MenuIcon />
-            </IconButton>
-          </Toolbar>
-        </AppBar>
+        
+        
         <Drawer variant="permanent" open={open}>
           <Toolbar
             sx={{
@@ -169,21 +127,24 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             </Button>
           </Box>
         </Drawer>
+        
+        
         <Box
           component="main"
           sx={{
+            flexGrow: 1,
             backgroundColor: (theme) =>
               theme.palette.mode === 'light'
                 ? theme.palette.grey[100]
                 : theme.palette.grey[900],
-            flexGrow: 1,
             height: '100vh',
             overflow: 'auto',
-            p: 0, 
+            p: 3, 
           }}
         >
-          <Toolbar />
-          <Box sx={{ p: 0 }}>{children}</Box>{' '}
+          
+          <WalletConnect />
+          <Box sx={{ p: 2 }}>{children}</Box>
         </Box>
       </Box>
     </ThemeProvider>
