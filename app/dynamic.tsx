@@ -11,7 +11,7 @@ export default function WalletConnect() {
   return (
     <DynamicContextProvider
       settings={{
-        environmentId: 'db04d673-4e35-4fdb-a1cf-8d59c82f001f',
+        environmentId: '537eea0e-0efe-45e4-a2c9-a4c03d17cecd',
         walletConnectorExtensions: [EthersExtension],
         walletConnectors: [EthereumWalletConnectors, StarknetWalletConnectors],
       }}

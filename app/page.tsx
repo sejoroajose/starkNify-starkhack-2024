@@ -3,7 +3,6 @@
 import React from 'react'
 import CssBaseline from '@mui/material/CssBaseline'
 import Box from '@mui/material/Box'
-import { alpha } from '@mui/material' 
 import Iframe from 'react-iframe'
 import AppAppBar from '@/app/components/AppAppBar'
 import Hero from '@/app/components/Hero'
@@ -13,7 +12,9 @@ export default function LandingPage() {
     <Box>
       <CssBaseline />
       <AppAppBar />
+      
       <Hero />
+
       <Box
         sx={{
           mt: { xs: 4, sm: 6 }, 
@@ -23,6 +24,7 @@ export default function LandingPage() {
         }}
       >
         <Iframe
+          id='explore'
           url="http://localhost:8501"
           width="90%" 
           height="1000vh"

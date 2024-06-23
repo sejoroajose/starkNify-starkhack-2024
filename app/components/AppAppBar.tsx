@@ -9,14 +9,13 @@ import Typography from '@mui/material/Typography'
 import MenuItem from '@mui/material/MenuItem'
 import Drawer from '@mui/material/Drawer'
 import MenuIcon from '@mui/icons-material/Menu'
-
+import WalletConnect from '@/app/dynamic' 
 
 const logoStyle = {
   width: '140px',
   height: 'auto',
   cursor: 'pointer',
 }
-
 
 function AppAppBar() {
   const [open, setOpen] = React.useState(false)
@@ -57,69 +56,68 @@ function AppAppBar() {
                 flexGrow: 1,
                 display: 'flex',
                 alignItems: 'center',
-                ml: '-18px',
-                px: 0,
               }}
             >
-              <img
-                src={
-                  'https://assets-global.website-files.com/61ed56ae9da9fd7e0ef0a967/61f12e6faf73568658154dae_SitemarkDefault.svg'
-                }
+              <h1 className="text-gray-950 font-extrabold">Starknify</h1>
+              {/* <img
+                src={'https://imgur.com/FWtbTPv'}
                 style={logoStyle}
                 alt="Starknify logo"
-              />
-              <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-                <MenuItem
-                  onClick={() => scrollToSection('features')}
-                  sx={{ py: '6px', px: '12px' }}
-                >
-                  <Typography variant="body2" color="text.primary">
-                    Features
-                  </Typography>
-                </MenuItem>
-                <MenuItem
-                  onClick={() => scrollToSection('testimonials')}
-                  sx={{ py: '6px', px: '12px' }}
-                >
-                  <Typography variant="body2" color="text.primary">
-                    Testimonials
-                  </Typography>
-                </MenuItem>
-                <MenuItem
-                  onClick={() => scrollToSection('highlights')}
-                  sx={{ py: '6px', px: '12px' }}
-                >
-                  <Typography variant="body2" color="text.primary">
-                    Highlights
-                  </Typography>
-                </MenuItem>
-                <MenuItem
-                  onClick={() => scrollToSection('pricing')}
-                  sx={{ py: '6px', px: '12px' }}
-                >
-                  <Typography variant="body2" color="text.primary">
-                    Pricing
-                  </Typography>
-                </MenuItem>
-                <MenuItem
-                  onClick={() => scrollToSection('faq')}
-                  sx={{ py: '6px', px: '12px' }}
-                >
-                  <Typography variant="body2" color="text.primary">
-                    FAQ
-                  </Typography>
-                </MenuItem>
-              </Box>
+                onClick={() => (window.location.href = '/')}
+              /> */}
             </Box>
+
             <Box
               sx={{
+                flexGrow: 2,
                 display: { xs: 'none', md: 'flex' },
-                gap: 0.5,
+                justifyContent: 'center',
                 alignItems: 'center',
               }}
             >
-              
+              <MenuItem
+                onClick={() => scrollToSection('explore')}
+                sx={{ py: '6px', px: '12px' }}
+              >
+                <Typography variant="body2" color="text.primary">
+                  Explore
+                </Typography>
+              </MenuItem>
+              <MenuItem
+                onClick={() => (window.location.href = '/storage_proofs')}
+                sx={{ py: '6px', px: '12px' }}
+              >
+                <Typography variant="body2" color="text.primary">
+                  Chain Specific Data
+                </Typography>
+              </MenuItem>
+              <MenuItem
+                onClick={() => scrollToSection('')}
+                sx={{ py: '6px', px: '12px' }}
+              >
+                <Typography variant="body2" color="text.primary">
+                  Swap
+                </Typography>
+              </MenuItem>
+              <MenuItem
+                onClick={() => scrollToSection('')}
+                sx={{ py: '6px', px: '12px' }}
+              >
+                <Typography variant="body2" color="text.primary">
+                  Bridge
+                </Typography>
+              </MenuItem>
             </Box>
+
+            <Box
+              sx={{
+                display: { xs: 'none', md: 'flex' },
+                alignItems: 'center',
+              }}
+            >
+              <WalletConnect />
+            </Box>
+
             <Box sx={{ display: { sm: '', md: 'none' } }}>
               <Button
                 variant="text"
@@ -136,37 +134,23 @@ function AppAppBar() {
                     minWidth: '60dvw',
                     p: 2,
                     backgroundColor: 'background.paper',
-                    flexGrow: 1,
                   }}
                 >
-                  <Box
-                    sx={{
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'end',
-                      flexGrow: 1,
-                    }}
+                  <MenuItem onClick={() => scrollToSection('explore')}>
+                    Explore
+                  </MenuItem>
+                  <MenuItem
+                    onClick={() => (window.location.href = '/storage_proofs')}
                   >
-                    
-                  </Box>
-                  <MenuItem onClick={() => scrollToSection('features')}>
-                    Features
+                    Chain Specific Data
                   </MenuItem>
-                  <MenuItem onClick={() => scrollToSection('testimonials')}>
-                    Testimonials
-                  </MenuItem>
-                  <MenuItem onClick={() => scrollToSection('highlights')}>
-                    Highlights
-                  </MenuItem>
-                  <MenuItem onClick={() => scrollToSection('pricing')}>
-                    Pricing
-                  </MenuItem>
-                  <MenuItem onClick={() => scrollToSection('faq')}>
-                    FAQ
+                  <MenuItem onClick={() => scrollToSection('')}>Swap</MenuItem>
+                  <MenuItem onClick={() => scrollToSection('')}>
+                    Bridge
                   </MenuItem>
                   <Divider />
                   <MenuItem>
-                    
+                    <WalletConnect />
                   </MenuItem>
                 </Box>
               </Drawer>
