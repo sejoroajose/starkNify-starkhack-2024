@@ -12,21 +12,21 @@ export default function LandingPage() {
     <Box>
       <CssBaseline />
       <AppAppBar />
-      
+
       <Hero />
 
       <Box
         sx={{
-          mt: { xs: 4, sm: 6 }, 
-          display: 'flex', 
-          justifyContent: 'center', 
-          width: '100%', 
+          mt: { xs: 4, sm: 6 },
+          display: 'flex',
+          justifyContent: 'center',
+          width: '100%',
         }}
       >
         <Iframe
-          id='explore'
-          url="http://localhost:8501"
-          width="90%" 
+          id="explore"
+          url="https://starknify.streamlit.app/"
+          width="90%"
           height="1000vh"
           display="block"
           position="relative"
